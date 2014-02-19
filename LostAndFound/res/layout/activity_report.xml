@@ -1,0 +1,292 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1"
+    tools:context=".ReportActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+        <LinearLayout
+            android:id="@+id/linearreport1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageUsermain"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/user" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearreport2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/linearreport1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textReportTypeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="open-sans"
+                android:text="@string/reportType_title"
+                android:textColor="#B4B4B4"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerReportType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TableRow
+                android:id="@+id/alertRowPetName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textReportPetName"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="open-sans"
+                    android:text="@string/reportPetName_lbl"
+                    android:textColor="#3A3A3A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextpetName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="open-sans"
+                    android:hint="@string/reportPetName_lbl"
+                    android:inputType="text"
+                    android:textColor="#B4B4B4"
+                    android:textSize="14sp" >
+                </EditText>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/alertRowPetAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textReportPetAge"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="open-sans"
+                    android:text="@string/reportPetAge_lbl"
+                    android:textColor="#3A3A3A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinnerReportPetAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/alertRowPetType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textReportPetType"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="open-sans"
+                    android:text="@string/reportPetType_lbl"
+                    android:textColor="#3A3A3A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinnerReportPetType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/alertRowPetReportTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textReportpetReportTel"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="open-sans"
+                    android:text="@string/reportPetReportTel_lbl"
+                    android:textColor="#3A3A3A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextpetReportTel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fontFamily="open-sans"
+                    android:hint="@string/reportPetReportTel_lbl"
+                    android:inputType="phone"
+                    android:textColor="#B4B4B4"
+                    android:textSize="14sp" >
+                </EditText>
+            </TableRow>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textReportpetReportFeatures"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearreport2"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="open-sans"
+            android:text="@string/reportPetFeatures_lbl"
+            android:textColor="#3A3A3A"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextpetFeatures"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@+id/textReportpetReportFeatures"
+            android:layout_marginTop="10dp" 
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:fontFamily="open-sans"
+            android:gravity="top"
+            android:hint="@string/reportPetFeatures_txt"
+            android:inputType="text"
+            android:paddingLeft="5dp"
+            android:textAlignment="textStart"
+            android:textColor="#B4B4B4"
+            android:textSize="14sp" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/editTextReportMsg"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@+id/editTextpetFeatures"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:fontFamily="open-sans"
+            android:gravity="top"
+            android:hint="@string/reportPetReportMsg_lbl"
+            android:inputType="textMultiLine"
+            android:paddingLeft="5dp"
+            android:textAlignment="textStart"
+            android:textColor="#B4B4B4"
+            android:textSize="14sp" >
+        </EditText>
+
+        <TableRow
+            android:id="@+id/alertRowPetReportMedia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextReportMsg"
+            android:orientation="horizontal"
+            android:weightSum="3" >
+
+            <LinearLayout
+                android:id="@+id/hLinearScrollViewReport"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2.95"
+                android:gravity="center"
+                android:background="@drawable/controls"
+                android:orientation="horizontal" >
+
+                <at.technikum.mti.fancycoverflow.FancyCoverFlow
+                    android:id="@+id/fancyCoverFlow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center" />
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearreport3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="35dp"
+                android:layout_weight="0.05"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/btnTakePhotoReport"
+                    android:layout_width="68dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/corner_round_btn_light_gray"
+                    android:contentDescription="@string/reportPetReportTakePic_lbl"
+                    android:src="@drawable/cam_gray" />
+
+                <ImageButton
+                    android:id="@+id/btnSelectPhotoReport"
+                    android:layout_width="68dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/corner_round_btn_light_gray"
+                    android:contentDescription="@string/reportPetReportSelectPic_lbl"
+                    android:src="@drawable/gallery" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:id="@+id/reportMapContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="115dp"
+            android:layout_below="@+id/alertRowPetReportMedia"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/corner_roundwhite"
+            android:orientation="horizontal"
+            android:padding="6dp" >
+
+            <fragment
+                android:id="@+id/reportMap"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                class="com.google.android.gms.maps.SupportMapFragment" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,152 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B71C4E"
+    tools:context=".LoginScreen" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="20dp" >
+
+        <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/splash_logo" />
+
+        <TextView
+            android:id="@+id/login_app_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="open-sans"
+            android:text="@string/app_title"
+            android:textAlignment="center"
+            android:textSize="46sp" />
+
+        <TextView
+            android:id="@+id/login_app_subtittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-7dp"
+            android:fontFamily="open-sans"
+            android:text="@string/app_subtitle"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/corner_and_border_white_editext"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingLeft="4dp"
+            android:textColor="#3A3A3A"
+            android:textSize="20sp" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="-2dp"
+            android:background="@drawable/corner_and_border_white_editext"
+            android:ems="10"
+            android:fontFamily="open-sans"
+            android:inputType="textPassword"
+            android:paddingLeft="4dp"
+            android:textColor="#3A3A3A"
+            android:textSize="20sp" >
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/loginBtn"
+            android:layout_width="225dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="20dp"
+            android:background="#B71C4E"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/login_btn" />
+
+        <ImageView
+            android:id="@+id/login_or"
+            android:layout_width="221dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/or_line" />
+
+        <ImageButton
+            android:id="@+id/loginGuestBtn"
+            android:layout_width="225dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="10dp"
+            android:background="#B71C4E"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/guest" />
+
+        <ImageButton
+            android:id="@+id/loginFbBtn"
+            android:layout_width="225dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="10dp"
+            android:background="#B71C4E"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/fbsign" />
+
+        <ImageButton
+            android:id="@+id/loginTwBtn"
+            android:layout_width="225dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:background="#B71C4E"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/twsign" />
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="#B71C4E"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2" >
+
+            <Button
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:fontFamily="open-sans"
+                android:text="@string/app_registrer"
+                android:textColor="#FCE8ED"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:fontFamily="open-sans"
+                android:text="@string/app_newpass"
+                android:textColor="#FCE8ED"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F1F1F1"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/corner_roundwhite"
+        android:gravity="center_horizontal"
+        android:paddingBottom="3dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="8dp" >
+
+        <LinearLayout
+            android:id="@+id/linearmain2"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/detail_chart_magenta"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/titleIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="2dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/abuse_icon" />
+
+            <TextView
+                android:id="@+id/reportTypeLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="open-sans"
+                android:text="@string/report_abuse"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvResolve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="open-sans"
+                android:text="@string/report_resolve"
+                android:textColor="#FFd400"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearmain3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/linearmain2"
+            android:layout_marginBottom="10dp"
+            android:background="#FFFFFF"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageUsermain"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/user" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/txtUserNameMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="open-sans"
+                    android:text="@string/userName"
+                    android:textColor="#656565"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/userShortMsg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="#00000000"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:fontFamily="open-sans"
+                    android:inputType="textMultiLine"
+                    android:text="@string/userMsg2"
+                    android:textColor="#656565"
+                    android:textSize="14sp" >
+                </EditText>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/postTimeTxtMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/linearmain3"
+            android:layout_alignTop="@+id/linearmain3"
+            android:layout_marginRight="9dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="open-sans"
+            android:text="@string/postTime"
+            android:textColor="#B71C4E"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/leerMasDetailChart2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/linearmain3"
+            android:layout_alignRight="@+id/linearmain3"
+            android:layout_marginBottom="-8dp"
+            android:layout_marginRight="9dp"
+            android:fontFamily="open-sans"
+            android:text="@string/leerMas"
+            android:textColor="#63C2D0"
+            android:textSize="14sp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/linearmain3"
+            android:background="@drawable/corner_round_bottom_gray"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3" >
+
+            <TableRow
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_weight="2.3"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/layoutAlert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:id="@+id/ivChart_Alert"
+                        android:layout_width="22dp"
+                        android:layout_height="19dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/alert_active" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="open-sans"
+                        android:text="@string/alertLbl"
+                        android:textColor="#656565"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="19dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="1dp"
+                        android:contentDescription="@string/report"
+                        android:src="@drawable/compartir_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="open-sans"
+                        android:text="@string/share"
+                        android:textColor="#656565"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_weight="0.7"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="19dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="2dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/msg" />
+
+                <TextView
+                    android:id="@+id/tvNumComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="open-sans"
+                    android:text="@string/numComnts"
+                    android:textColor="#656565"
+                    android:textSize="12sp" />
+            </TableRow>
+        </TableRow>
+    </RelativeLayout>
+
+</LinearLayout>
