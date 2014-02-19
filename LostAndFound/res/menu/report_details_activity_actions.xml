@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+     <!-- Alert, should appear as action button -->
+    <item
+        android:id="@+id/action_alert"
+        android:icon="@drawable/bell"
+        android:title="@string/alertLbl" 
+        android:showAsAction="always"/>
+    <!-- Share, should appear as action button -->
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/share_white"
+        android:title="@string/share" 
+        android:showAsAction="always"/>
+    <!-- Resolve, should appear as action button -->
+    <item
+        android:id="@+id/action_resolve"
+        android:icon="@drawable/checked"
+        android:title="@string/report_resolve"
+        android:showAsAction="always"/>
+
+    <!-- Settings, should appear as action button -->
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_action_settings"
+        android:title="@string/action_settings"
+        android:showAsAction="never"/>
+
+</menu>
