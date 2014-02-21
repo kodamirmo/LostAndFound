@@ -47,7 +47,11 @@ public class TwitterApp {
 	public static final String CALLBACK_URL = "twitterapp://connect";
 	private static final String TAG = "TwitterApp";
 	
-	public TwitterApp(Context context, String consumerKey, String secretKey) {
+	public static TwitterApp getTwitterApp(Context context){
+		return new TwitterApp(context, TwitterData.twitter_consumer_key, TwitterData.twitter_secret_key);
+	}
+	
+	private TwitterApp(Context context, String consumerKey, String secretKey) {
 		this.context	= context;
 		
 		mTwitter 		= new TwitterFactory().getInstance();
