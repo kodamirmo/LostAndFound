@@ -53,7 +53,6 @@ public class SplashScreen extends Activity {
 			//DataCache.saveCache(handler.getReports());
 			DataSourceDumy handler=new DataSourceDumy();
 			DataCache.saveCache(handler.getData());
-			
 
 			try {
 				if (Constants.isDebug())

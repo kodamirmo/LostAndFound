@@ -1,11 +1,11 @@
 package com.blastic.lostandfound;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import android.widget.Toast;
 
+import com.blastic.lostandfound.dialogs.DialogConfirmGuest;
 import com.blastic.lostandfound.preferences.UserData;
 import com.blastic.lostandfound.tw.TwitterApp;
 import com.blastic.lostandfound.tw.TwitterApp.TwDialogListener;
@@ -28,7 +29,7 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.blastic.lostandfound.R;
 
-public class LoginScreen extends Activity implements OnClickListener {
+public class LoginScreen extends ActionBarActivity implements OnClickListener {
 
 	// For Twitter
 	private TwitterApp mTwitter;
@@ -49,8 +50,13 @@ public class LoginScreen extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_screen);
 	
+		initActionBar();
 		initViews();
 		initSocialNetworks(savedInstanceState);
+	}
+	
+	private void initActionBar(){
+		getSupportActionBar().hide();
 	}
 	
 	private void initSocialNetworks(Bundle savedInstanceState){
@@ -102,7 +108,7 @@ public class LoginScreen extends Activity implements OnClickListener {
 		if (mTwitter.hasAccessToken()) {
 			final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-			builder.setMessage("¿Borrar la conexión actual de Twitter?")
+			builder.setMessage("��Borrar la conexi��n actual de Twitter?")
 					.setCancelable(false)
 					.setPositiveButton("Si",
 							new DialogInterface.OnClickListener() {
@@ -131,27 +137,12 @@ public class LoginScreen extends Activity implements OnClickListener {
 	}
 	
 	private void loginAsAGuest(){
-		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Como invitado, las caracteristicas son limitadas.\n ¿Continuar?")
-				.setCancelable(false)
-				.setPositiveButton("Si",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,int id) {
-								goToHome();
-							}
-						})
-				.setNegativeButton("No",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,int id) {
-								dialog.cancel();
-							}
-						});
-		final AlertDialog alert = builder.create();
-		alert.show();
+		DialogConfirmGuest dialog=new DialogConfirmGuest();
+		dialog.show(getSupportFragmentManager(), "GUEST");
 	}
 
 
-	private void goToHome() {
+	public void goToHome() {
 		Intent home = new Intent(this, Home.class);
 		startActivity(home);
 		this.finish();
@@ -219,7 +210,7 @@ public class LoginScreen extends Activity implements OnClickListener {
 
 		@Override
 		public void onError(String value) {
-			showMessage("La conexón con Twitter fallo");
+			showMessage("La conex��n con Twitter fallo");
 		}
 	};
 	
@@ -243,12 +234,12 @@ public class LoginScreen extends Activity implements OnClickListener {
 							goToHome();
 
 						} else {
-							showMessage("La conexión con Facebook fallo");
+							showMessage("La conexi��n con Facebook fallo");
 						}
 					}
 				}).executeAsync();
 			} else {
-				showMessage("Iniciando sesión");
+				showMessage("Iniciando sesi��n");
 			}
 		}
 	};

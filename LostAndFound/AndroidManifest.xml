@@ -28,13 +28,18 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppBaseTheme" >
+        android:theme="@style/Theme.AppCompat.Light" >
+        
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyANeyKVdlgDw4TREGKsrMgf_pxaez1nMkw" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
 
         <activity
             android:name="com.blastic.lostandfound.SplashScreen"
@@ -48,8 +53,7 @@
         </activity>
         <activity
             android:name="com.blastic.lostandfound.LoginScreen"
-            android:label="@string/title_activity_login_screen"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:label="@string/title_activity_login_screen" >
             <intent-filter>
                 <data
                     android:host="tweeter"
@@ -59,8 +63,7 @@
         </activity>
         <activity
             android:name="com.blastic.lostandfound.Home"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.blastic.lostandfound.ReportActivity"
@@ -70,19 +73,13 @@
         <activity
             android:name="com.blastic.lostandfound.RegisterActivity"
             android:icon="@drawable/app_name2"
-            android:label="@string/title_activity_register"
-            android:parentActivityName="com.blastic.lostandfound.LoginScreen" >
+            android:label="@string/title_activity_register" >
         </activity>
         <activity
             android:name="com.blastic.lostandfound.ListReportsActivity"
             android:icon="@drawable/app_name2"
             android:label="@string/title_activity_list_reports" >
         </activity>
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/app_id" />
-
         <activity
             android:name="com.facebook.LoginActivity"
             android:label="@string/app_name" >

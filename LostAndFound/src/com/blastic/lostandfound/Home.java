@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import com.blastic.lostandfound.R;
+import com.blastic.lostandfound.config.Config;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -101,8 +102,8 @@ public class Home extends ActionBarActivity {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setIcon(R.drawable.app_name2);
-		actionBar.setBackgroundDrawable(new ColorDrawable(Color
-				.parseColor("#B71C4E")));
+		actionBar.setBackgroundDrawable(
+				new ColorDrawable(Color.parseColor(Config.actionBarColor)));
 		actionBar.setTitle(currentTitle);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
@@ -190,7 +191,7 @@ public class Home extends ActionBarActivity {
 	}
 
 	private void openAlerts() {
-		Toast.makeText(this, "Esta opción aún no está disponible en el demo",
+		Toast.makeText(this, "Esta opci��n a��n no est�� disponible en el demo",
 				Toast.LENGTH_LONG).show();
 	}
 
@@ -199,7 +200,7 @@ public class Home extends ActionBarActivity {
 			Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 			startActivityForResult(cameraIntent, TAKE_PICTURE);
 		} else {
-			Toast.makeText(this, "Como invitado no puedes usar esta opción",
+			Toast.makeText(this, "Como invitado no puedes usar esta opci��n",
 					Toast.LENGTH_LONG).show();
 		}
 
@@ -210,7 +211,7 @@ public class Home extends ActionBarActivity {
 			Intent openRepo = new Intent(this, ReportActivity.class);
 			startActivity(openRepo);
 		} else {
-			Toast.makeText(this, "Como invitado no puedes usar esta opción",
+			Toast.makeText(this, "Como invitado no puedes usar esta opci��n",
 					Toast.LENGTH_LONG).show();
 		}
 	}
@@ -348,7 +349,7 @@ public class Home extends ActionBarActivity {
 
 		// Review if the image come from the camera or the gallery
 		Toast toast2 = Toast.makeText(getApplicationContext(),
-				"Ocurrió un error", Toast.LENGTH_SHORT);
+				"Ocurri�� un error", Toast.LENGTH_SHORT);
 
 		if (resultCode == RESULT_OK) {
 

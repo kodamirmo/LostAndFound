@@ -289,27 +289,6 @@ public class ReportsByPageWebService {
 
 		Log.v("TAG", "detail : " + detail);
 
-		/*
-		 * JSONObject jsonMessages = null; try { jsonMessages =
-		 * jsonPadre.getJSONObject("messages"); } catch (JSONException e) {
-		 * e.printStackTrace(); return null; }
-		 * 
-		 * 
-		 * String messages = null;
-		 * 
-		 * try { messages = jsonMessages.getString("messages"); } catch
-		 * (JSONException e) { e.printStackTrace(); return null; }
-		 * 
-		 * Log.v("TAG", "messages : " + messages);
-		 * 
-		 * String errors = null;
-		 * 
-		 * try { errors = jsonMessages.getString("errors"); } catch
-		 * (JSONException e) { e.printStackTrace(); return null; }
-		 * 
-		 * Log.v("TAG", "errors : " + errors);
-		 */
-
 		final Report auxReport = new Report(idReporte, Report.CAUSE_ABUSE, 1, location, picture,
 				comments, true, 40, false, userId);
 
