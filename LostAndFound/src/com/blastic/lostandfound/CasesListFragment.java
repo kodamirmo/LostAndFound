@@ -32,16 +32,25 @@ public class CasesListFragment extends Fragment{
     }
 	
 	private void initViews(){
-		//Bundle arguments=getArguments();
-        //int screenType=arguments.getInt("TYPE");
-     
+		
         listView=(ListView)getView().findViewById(R.id.listViewReports);
         
-        ArrayList<Report> listReports=AppCache.getAllReports();
+        Bundle arguments=getArguments();
+        ArrayList<Report> listReports;
         
-        ReportsAdapter adapter=new ReportsAdapter(getActivity(), listReports);
+        if(!arguments.containsKey("TYPE"))
+        	listReports=AppCache.getAllReports();
+        else{
+        	int reportType=arguments.getInt("TYPE");
+        	listReports=AppCache.getReports(reportType);
+        }
         
-        listView.setAdapter(adapter);
+        if(listReports.size()==0){
+        	//No hay reportes
+        }else{
+        	ReportsAdapter adapter=new ReportsAdapter(getActivity(), listReports);
+        	listView.setAdapter(adapter);
+        }
 	}
 
 }

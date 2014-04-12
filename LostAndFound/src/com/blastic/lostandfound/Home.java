@@ -8,7 +8,10 @@ import java.io.OutputStream;
 
 import com.blastic.lostandfound.R;
 import com.blastic.lostandfound.config.Config;
+import com.blastic.lostandfound.data.AppCache;
+import com.blastic.lostandfound.dialogs.DialogNoAvailable;
 import com.blastic.lostandfound.preferences.UserData;
+import com.blastic.lostandfound.transferobjects.Report;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,6 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -38,9 +42,6 @@ public class Home extends ActionBarActivity {
 
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
-	
-	private Fragment fragment;
-	private Bundle arguments;
 
 	private static int TAKE_PICTURE = 100;
 
@@ -64,13 +65,11 @@ public class Home extends ActionBarActivity {
 	private final int SCREEN_FOUND = 4;
 	private final int SCREEN_ABUSE = 5;
 	private final int SCREEN_HOMELESS = 6;
-	private final int SCREEN_ACCIDENT = 8;
-	private final int SCREEN_MAP = 7;
-	private final int SCREEN_RANK = 9;
+	private final int SCREEN_ACCIDENT = 7;
+	private final int SCREEN_MAP = 8;
 	private final int SCREEN_DONATE = 10;
 
 	private int CURRENT_SCREEN = 0;
-	private String currentTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,16 +78,13 @@ public class Home extends ActionBarActivity {
 
 		initSlidingMenu();
 		initViews();
-		showScreen(0);
+		showScreen(R.id.entry_Home);
 
 	}
 
 	private void initSlidingMenu() {
 
 		final ActionBar actionBar = getSupportActionBar();
-
-		currentTitle = "";
-
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,GravityCompat.START);
 
@@ -97,20 +93,18 @@ public class Home extends ActionBarActivity {
 		actionBar.setIcon(R.drawable.app_name2);
 		actionBar.setBackgroundDrawable(
 				new ColorDrawable(Color.parseColor(Config.actionBarColor)));
-		actionBar.setTitle(currentTitle);
+		actionBar.setTitle("");
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_drawer, R.string.drawer_open,
 				R.string.drawer_close) {
 			@Override
 			public void onDrawerClosed(View view) {
-				actionBar.setTitle(currentTitle);
 				supportInvalidateOptionsMenu();
 			}
 
 			@Override
 			public void onDrawerOpened(View drawerView) {
-				actionBar.setTitle(currentTitle);
 				supportInvalidateOptionsMenu();
 			}
 		};
@@ -119,16 +113,16 @@ public class Home extends ActionBarActivity {
 
 	private void initViews() {
 		btn_0 = (TableRow) findViewById(R.id.entry_Home);
-		btn_1 = (TableRow) findViewById(R.id.entry_1);
-		btn_2 = (TableRow) findViewById(R.id.entry_2);
-		btn_3 = (TableRow) findViewById(R.id.entry_3);
-		btn_4 = (TableRow) findViewById(R.id.entry_4);
-		btn_5 = (TableRow) findViewById(R.id.entry_5);
-		btn_6 = (TableRow) findViewById(R.id.entry_6);
-		btn_7 = (TableRow) findViewById(R.id.entry_7);
-		btn_8 = (TableRow) findViewById(R.id.entry_8);
-		btn_9 = (TableRow) findViewById(R.id.entry_9);
-		btn_10 = (TableRow) findViewById(R.id.entry_10);
+		btn_1 = (TableRow) findViewById(R.id.entry_Alerts);
+		btn_2 = (TableRow) findViewById(R.id.entry_Reports);
+		btn_3 = (TableRow) findViewById(R.id.entry_Lost);
+		btn_4 = (TableRow) findViewById(R.id.entry_Found);
+		btn_5 = (TableRow) findViewById(R.id.entry_Abuse);
+		btn_6 = (TableRow) findViewById(R.id.entry_homeless);
+		btn_7 = (TableRow) findViewById(R.id.entry_accident);
+		btn_8 = (TableRow) findViewById(R.id.entry_map);
+		btn_9 = (TableRow) findViewById(R.id.entry_rank);
+		btn_10 = (TableRow) findViewById(R.id.entry_donate);
 
 		MenuListener listener = new MenuListener();
 		btn_0.setOnClickListener(listener);
@@ -176,6 +170,15 @@ public class Home extends ActionBarActivity {
 		}
 
 	}
+	
+	private void rankApp(){
+		final String appPackageName = getPackageName();
+		try {
+		    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+		} catch (android.content.ActivityNotFoundException anfe) {
+		    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+		}
+	}
 
 	private void openSettings() {
 		//Intent openSet = new Intent(this, SettingsActivity.class);
@@ -183,8 +186,7 @@ public class Home extends ActionBarActivity {
 	}
 
 	private void openAlerts() {
-		Toast.makeText(this, "alertas",
-				Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "alertas",Toast.LENGTH_LONG).show();
 	}
 
 	private void openCamera() {
@@ -192,8 +194,8 @@ public class Home extends ActionBarActivity {
 			Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 			startActivityForResult(cameraIntent, TAKE_PICTURE);
 		} else {
-			Toast.makeText(this, "Como invitado no puedes usar esta opción",
-					Toast.LENGTH_LONG).show();
+			DialogNoAvailable dialog=new DialogNoAvailable();
+			dialog.show(getSupportFragmentManager(), "DIALOG");
 		}
 
 	}
@@ -203,8 +205,8 @@ public class Home extends ActionBarActivity {
 			Intent openRepo = new Intent(this, ReportActivity.class);
 			startActivity(openRepo);
 		} else {
-			Toast.makeText(this, "Como invitado no puedes usar esta opción",
-					Toast.LENGTH_LONG).show();
+			DialogNoAvailable dialog=new DialogNoAvailable();
+			dialog.show(getSupportFragmentManager(), "DIALOG");
 		}
 	}
 
@@ -227,102 +229,84 @@ public class Home extends ActionBarActivity {
 
 	private void showScreen(int id) {
 
-		fragment = null;
-		arguments = new Bundle();
+		Fragment fragment = null;
+		Bundle arguments = new Bundle();
 
 		switch (id) {
 
 		case R.id.entry_Home:
 			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_HOME);
-			currentTitle = "";
 			CURRENT_SCREEN = SCREEN_HOME;
 			break;
-		case R.id.entry_1:
+		case R.id.entry_Alerts:
 			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_ALERTS);
-			currentTitle = "";
+			arguments.putInt("TYPE",AppCache.TYPE_ALERTS);
 			CURRENT_SCREEN = SCREEN_ALERTS;
 			break;
-		case R.id.entry_2:
+		case R.id.entry_Reports:
 			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_REPORTS);
+			arguments.putInt("TYPE", AppCache.TYPE_MY_REPORTS);
 			CURRENT_SCREEN = SCREEN_REPORTS;
 			break;
-		case R.id.entry_3:
+		case R.id.entry_Lost:
 			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_LOST);
+			arguments.putInt("TYPE", Report.CAUSE_LOST);
 			CURRENT_SCREEN = SCREEN_LOST;
 			break;
-		case R.id.entry_4:
+		case R.id.entry_Found:
 			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_FOUND);
+			arguments.putInt("TYPE",Report.CAUSE_FOUND);
 			CURRENT_SCREEN = SCREEN_FOUND;
 			break;
-		case R.id.entry_5:
+		case R.id.entry_Abuse:
 			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_ABUSE);
+			arguments.putInt("TYPE", Report.CAUSE_ABUSE);
 			CURRENT_SCREEN = SCREEN_ABUSE;
 			break;
-		case R.id.entry_6:
+		case R.id.entry_homeless:
 			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_HOMELESS);
+			arguments.putInt("TYPE", Report.CAUSE_HOMELESS);
 			CURRENT_SCREEN = SCREEN_HOMELESS;
 			break;
-		case R.id.entry_7:
-			initMap();
-			break;
-		case R.id.entry_8:
+		case R.id.entry_accident:
 			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_ACCIDENT);
+			arguments.putInt("TYPE", Report.CAUSE_ACCIDENT);
 			CURRENT_SCREEN = SCREEN_ACCIDENT;
 			break;
-		case R.id.entry_9:
-			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_RANK);
-			CURRENT_SCREEN = SCREEN_HOME;
+		case R.id.entry_map:
+			fragment = new FragmentCasesMap();
+			CURRENT_SCREEN = SCREEN_MAP;
 			break;
-		case R.id.entry_10:
-			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_DONATE);
-			CURRENT_SCREEN = SCREEN_HOME;
-			break;
-		default:
-			fragment = new CasesListFragment();
-			arguments.putInt("TYPE", SCREEN_HOME);
-			currentTitle = "";
-			CURRENT_SCREEN = SCREEN_HOME;
+		case R.id.entry_donate:
+			fragment = new DonateFragment();
+			CURRENT_SCREEN = SCREEN_DONATE;
 			break;
 		}
 
 		fragment.setArguments(arguments);
 
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.content_frame, fragment).commit();
+		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 		mDrawerLayout.closeDrawers();
 	}
 
-	private void initMap() {
-		fragment = new FragmentCasesMap();
-		arguments.putInt("TYPE", SCREEN_MAP);
-		CURRENT_SCREEN = SCREEN_MAP;
-	}
+//	private void initMap() {
+//		fragment = new FragmentCasesMap();
+//		arguments.putInt("TYPE", SCREEN_MAP);
+//		CURRENT_SCREEN = SCREEN_MAP;
+//	}
 
-	public void removeMap() {
-		Fragment mFragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
-		FragmentCasesMap mapFragment = (FragmentCasesMap) mFragment;
-		mapFragment.removeMap();
-	}
+//	public void removeMap() {
+//		Fragment mFragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
+//		FragmentCasesMap mapFragment = (FragmentCasesMap) mFragment;
+//		mapFragment.removeMap();
+//	}
 
 	@Override
 	public void onBackPressed() {
 		if (CURRENT_SCREEN == SCREEN_HOME)
 			finish();
-		else if (CURRENT_SCREEN == SCREEN_MAP) {
-			removeMap();
-			showScreen(R.id.entry_Home);
-		} else
+		else
 			showScreen(R.id.entry_Home);
 	}
 
@@ -330,7 +314,15 @@ public class Home extends ActionBarActivity {
 		@Override
 		public void onClick(View v) {
 			int id = v.getId();
-			showScreen(id);
+			
+			if((id==R.id.entry_Alerts || id==R.id.entry_Reports) && UserData.isGuest(getBaseContext()) ){
+				DialogNoAvailable dialog=new DialogNoAvailable();
+				dialog.show(getSupportFragmentManager(), "DIALOG");
+			}else if(id==R.id.entry_rank){
+				rankApp();
+			}else{
+				showScreen(id);
+			}
 		}
 	}
 

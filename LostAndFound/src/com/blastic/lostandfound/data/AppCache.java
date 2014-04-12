@@ -20,7 +20,7 @@ public class AppCache {
 		return AppCache.allReports;
 	}
 	
-	public ArrayList<Report> getReports(int type){
+	public static ArrayList<Report> getReports(int type){
 		if(type==TYPE_ALERTS)
 			return getMyAltertReports();
 		else if(type==TYPE_MY_REPORTS)
@@ -29,7 +29,7 @@ public class AppCache {
 			return getReportsByType(type);
 	}
 	
-	private ArrayList<Report> getReportsByType(int type){
+	private static ArrayList<Report> getReportsByType(int type){
 		ArrayList<Report> auxList=new ArrayList<Report>();
 		
 		Iterator<Report> iterator=allReports.iterator();
@@ -42,7 +42,7 @@ public class AppCache {
 		return auxList;
 	}
 	
-	private ArrayList<Report> getMyReports(){
+	private static ArrayList<Report> getMyReports(){
 		ArrayList<Report> auxList=new ArrayList<Report>();
 		
 		Iterator<Report> iterator=allReports.iterator();
@@ -54,7 +54,7 @@ public class AppCache {
 		return auxList;
 	} 
 	
-	private ArrayList<Report> getMyAltertReports(){
+	private static ArrayList<Report> getMyAltertReports(){
 		ArrayList<Report> auxList=new ArrayList<Report>();
 		
 		Iterator<Report> iterator=allReports.iterator();
