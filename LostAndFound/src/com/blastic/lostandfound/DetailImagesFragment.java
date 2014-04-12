@@ -8,11 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 
 public class DetailImagesFragment extends Fragment implements OnClickListener{
-	
-	private ImageView arrowDown;
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -23,7 +20,7 @@ public class DetailImagesFragment extends Fragment implements OnClickListener{
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-       // initViews();
+        initViews();
     }
 	
 	private void initViews(){
