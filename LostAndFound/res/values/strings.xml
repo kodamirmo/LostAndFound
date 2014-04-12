@@ -76,9 +76,11 @@
     <string name="cancel">Cancelar</string>
     <string name="similary">Estos son los reportes similares:</string>
     <string name="title_activity_details"></string>
-    <string name="title_section1">Imágenes</string>
-    <string name="title_section2">Mensajes</string>
-    <string name="title_section3">Mapa</string>
+    
+    <string name="title_section1">IMAGENES</string>
+    <string name="title_section2">MENSAJES</string>
+    <string name="title_section3">MAPA</string>
+    
     <string name="title_activity_settings"></string>
     <string name="lblOptsDialogSimilary">Ver reportes similares</string>
     <string name="lblOptsInadequate">Reportar como inadecuado</string>

@@ -45,7 +45,6 @@ public class Home extends ActionBarActivity {
 
 	private static int TAKE_PICTURE = 100;
 
-	// Change the numbers to the actions name like btn_alerts
 	private TableRow btn_0;
 	private TableRow btn_1;
 	private TableRow btn_2;
@@ -158,9 +157,6 @@ public class Home extends ActionBarActivity {
 			case R.id.action_add_report:
 				openReport();
 				return true;
-			case R.id.action_alerts:
-				openAlerts();
-				return true;
 			case R.id.action_settings:
 				openSettings();
 				return true;
@@ -183,10 +179,6 @@ public class Home extends ActionBarActivity {
 	private void openSettings() {
 		//Intent openSet = new Intent(this, SettingsActivity.class);
 		//startActivity(openSet);
-	}
-
-	private void openAlerts() {
-		Toast.makeText(this, "alertas",Toast.LENGTH_LONG).show();
 	}
 
 	private void openCamera() {

@@ -32,7 +32,7 @@
         
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyANeyKVdlgDw4TREGKsrMgf_pxaez1nMkw" />
+            android:value="AIzaSyC21tmD2YOGCtpO5LVO_uYvbcSc6olTTA4" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -76,7 +76,7 @@
             android:label="@string/title_activity_register" >
         </activity>
         <activity
-            android:name="com.blastic.lostandfound.ListReportsActivity"
+            android:name="com.blastic.lostandfound.SimilarReportsScreen"
             android:icon="@drawable/app_name2"
             android:label="@string/title_activity_list_reports" >
         </activity>

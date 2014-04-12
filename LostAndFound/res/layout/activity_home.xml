@@ -56,7 +56,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_1"
+                    android:id="@+id/entry_Alerts"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -84,7 +84,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_2"
+                    android:id="@+id/entry_Reports"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -112,7 +112,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_3"
+                    android:id="@+id/entry_Lost"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -140,7 +140,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_4"
+                    android:id="@+id/entry_Found"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -169,7 +169,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_5"
+                    android:id="@+id/entry_Abuse"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -198,7 +198,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_6"
+                    android:id="@+id/entry_homeless"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -227,7 +227,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_8"
+                    android:id="@+id/entry_accident"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -256,7 +256,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_7"
+                    android:id="@+id/entry_map"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -285,7 +285,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_9"
+                    android:id="@+id/entry_rank"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
@@ -314,7 +314,7 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/entry_10"
+                    android:id="@+id/entry_donate"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
