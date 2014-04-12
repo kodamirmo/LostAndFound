@@ -10,10 +10,9 @@ public class AbuseReport extends Report{
 			String pathPicture, String comments, String commentAboutSituation,
 			boolean isAlert,int numComments, boolean isResolve,String userName) {
 		
-		super(idReport, typeReport, petType, lastlocation, pathPicture, comments,isAlert,numComments,isResolve,userName);
+		super(idReport,Report.CAUSE_ABUSE,petType,lastlocation,pathPicture,comments,isAlert,numComments,isResolve,userName);
 		
 		this.commentAboutSituation = commentAboutSituation;
-		super.typeReport=CAUSE_ABUSE;
 	}
 
 	public String getCommentAboutSituation() {

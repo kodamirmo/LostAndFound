@@ -31,7 +31,7 @@ public class Report implements Serializable{
 	private String pathPicture;
 	private String comments;
 	
-	protected static int typeReport;
+	private int typeReport;
 	
 	////////////////////////////////////////////
 	private boolean isAlert;

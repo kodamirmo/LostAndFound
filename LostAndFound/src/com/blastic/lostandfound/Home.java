@@ -8,9 +8,9 @@ import java.io.OutputStream;
 
 import com.blastic.lostandfound.R;
 import com.blastic.lostandfound.config.Config;
+import com.blastic.lostandfound.preferences.UserData;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -26,7 +26,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -43,7 +42,7 @@ public class Home extends ActionBarActivity {
 	private Fragment fragment;
 	private Bundle arguments;
 
-	private static int TAKE_PICTURE = 1;
+	private static int TAKE_PICTURE = 100;
 
 	// Change the numbers to the actions name like btn_alerts
 	private TableRow btn_0;
@@ -71,7 +70,7 @@ public class Home extends ActionBarActivity {
 	private final int SCREEN_DONATE = 10;
 
 	private int CURRENT_SCREEN = 0;
-	private String currentTitle, prefName;
+	private String currentTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +81,6 @@ public class Home extends ActionBarActivity {
 		initViews();
 		showScreen(0);
 
-		SharedPreferences preferences = this.getSharedPreferences("userPrefs",
-				MODE_PRIVATE);
-		prefName = preferences.getString("username", "nothing");
-
-		Log.i("username", "" + prefName);
 	}
 
 	private void initSlidingMenu() {
@@ -96,8 +90,7 @@ public class Home extends ActionBarActivity {
 		currentTitle = "";
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-				GravityCompat.START);
+		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,GravityCompat.START);
 
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
@@ -153,7 +146,6 @@ public class Home extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main_activity_actions, menu);
 		return super.onCreateOptionsMenu(menu);
@@ -191,27 +183,27 @@ public class Home extends ActionBarActivity {
 	}
 
 	private void openAlerts() {
-		Toast.makeText(this, "Esta opci��n a��n no est�� disponible en el demo",
+		Toast.makeText(this, "alertas",
 				Toast.LENGTH_LONG).show();
 	}
 
 	private void openCamera() {
-		if (!prefName.equals("guest")) {
+		if (!UserData.isGuest(this)) {
 			Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 			startActivityForResult(cameraIntent, TAKE_PICTURE);
 		} else {
-			Toast.makeText(this, "Como invitado no puedes usar esta opci��n",
+			Toast.makeText(this, "Como invitado no puedes usar esta opción",
 					Toast.LENGTH_LONG).show();
 		}
 
 	}
 
 	private void openReport() {
-		if (!prefName.equals("guest")) {
+		if (!UserData.isGuest(this)) {
 			Intent openRepo = new Intent(this, ReportActivity.class);
 			startActivity(openRepo);
 		} else {
-			Toast.makeText(this, "Como invitado no puedes usar esta opci��n",
+			Toast.makeText(this, "Como invitado no puedes usar esta opción",
 					Toast.LENGTH_LONG).show();
 		}
 	}
@@ -318,10 +310,8 @@ public class Home extends ActionBarActivity {
 	}
 
 	public void removeMap() {
-		Fragment mFragment = getSupportFragmentManager().findFragmentById(
-				R.id.content_frame);
+		Fragment mFragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
 		FragmentCasesMap mapFragment = (FragmentCasesMap) mFragment;
-
 		mapFragment.removeMap();
 	}
 
@@ -349,7 +339,7 @@ public class Home extends ActionBarActivity {
 
 		// Review if the image come from the camera or the gallery
 		Toast toast2 = Toast.makeText(getApplicationContext(),
-				"Ocurri�� un error", Toast.LENGTH_SHORT);
+				"Ocurrio un error", Toast.LENGTH_SHORT);
 
 		if (resultCode == RESULT_OK) {
 

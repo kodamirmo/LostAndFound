@@ -7,9 +7,8 @@ public class HomelessReport extends Report{
 	public HomelessReport(String idReport, int petType, String lastlocation,
 			String pathPicture,String comments,
 			boolean isAlert,int numComments, boolean isResolve,String userName) {
-		super(idReport, typeReport, petType, lastlocation, pathPicture, comments,isAlert,numComments,isResolve,userName);
 		
-		super.typeReport=CAUSE_HOMELESS;
+		super(idReport,Report.CAUSE_HOMELESS,petType,lastlocation,pathPicture,comments,isAlert,numComments,isResolve,userName);
 	}
 
 }

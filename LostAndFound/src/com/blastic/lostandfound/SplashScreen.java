@@ -1,10 +1,9 @@
 package com.blastic.lostandfound;
 
 import com.blastic.lostandfound.constants.Constants;
-import com.blastic.lostandfound.data.DataCache;
+import com.blastic.lostandfound.data.AppCache;
 import com.blastic.lostandfound.data.DataSourceDumy;
 import com.blastic.lostandfound.preferences.ConfigData;
-import com.blastic.lostandfound.services.AllReportsWebService;
 import com.blastic.lostandfound.R;
 
 import android.os.AsyncTask;
@@ -52,7 +51,7 @@ public class SplashScreen extends Activity {
 			//AllReportsWebService handler = new AllReportsWebService();
 			//DataCache.saveCache(handler.getReports());
 			DataSourceDumy handler=new DataSourceDumy();
-			DataCache.saveCache(handler.getData());
+			AppCache.saveCache(handler.getData());
 
 			try {
 				if (Constants.isDebug())

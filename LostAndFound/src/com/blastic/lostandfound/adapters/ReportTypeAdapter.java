@@ -14,12 +14,10 @@ import android.widget.TextView;
 
 public class ReportTypeAdapter extends BaseAdapter{
 	
-	private Context context;
 	private LayoutInflater inflater;
 	private ArrayList<ReportType> list;
 
 	public ReportTypeAdapter(Context context,ArrayList<ReportType> list){
-		this.context=context;
 		this.list=list;
 		inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}

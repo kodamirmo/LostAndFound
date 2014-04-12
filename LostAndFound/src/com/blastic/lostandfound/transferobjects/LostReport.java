@@ -14,13 +14,12 @@ public class LostReport extends Report{
 			String colorPet, String namePet,
 			boolean isAlert,int numComments, boolean isResolve,String userName) {
 		
-		super(idReport, typeReport, petType, lastlocation, pathPicture, comments,isAlert,numComments,isResolve,userName);
+		super(idReport,Report.CAUSE_LOST,petType,lastlocation,pathPicture,comments,isAlert,numComments,isResolve,userName);
 		
 		this.lostDate = lostDate;
 		this.agePet = agePet;
 		this.colorPet = colorPet; 
 		this.namePet = namePet;
-		super.typeReport=CAUSE_LOST;
 	}
 
 	public String getLostDate() {

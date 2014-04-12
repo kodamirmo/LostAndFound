@@ -7,9 +7,7 @@ public class AccidentReport extends Report{
 	public AccidentReport(String idReport, int petType, String lastlocation,
 			String pathPicture,String comments,boolean isAlert,int numComments, boolean isResolve,String userName) {
 		
-		super(idReport, typeReport, petType, lastlocation, pathPicture, comments,isAlert,numComments,isResolve,userName);
-
-		super.typeReport=CAUSE_ACCIDENT;
+		super(idReport,Report.CAUSE_ACCIDENT,petType,lastlocation,pathPicture,comments,isAlert,numComments,isResolve,userName);
 	}
 
 }

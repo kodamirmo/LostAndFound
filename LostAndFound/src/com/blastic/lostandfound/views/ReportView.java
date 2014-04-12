@@ -40,18 +40,15 @@ public class ReportView {
 
 	private View reportChart;
 	private View parentV;
-	private Vibrator vibe;
+	private Vibrator vibrator;
 	private ProgressDialog pd;
 
 	int rotation;
 
-	public ReportView(Report reportObject, LayoutInflater inflater) {
-		this.reportObject = reportObject;
+	public ReportView(LayoutInflater inflater) {
 		this.inflater = inflater;
-		// determines the orientation of the screen
 		rotation = inflater.getContext().getResources().getConfiguration().orientation;
-		vibe = (Vibrator) inflater.getContext().getSystemService(
-				Context.VIBRATOR_SERVICE);
+		vibrator = (Vibrator) inflater.getContext().getSystemService(Context.VIBRATOR_SERVICE);
 	}
 
 	private void generateChart_1() {
@@ -105,7 +102,7 @@ public class ReportView {
 
 			@Override
 			public void onClick(View v) {
-				vibe.vibrate(80);// 80 represents the milliseconds
+				vibrator.vibrate(80);// 80 represents the milliseconds
 				reportObject.changeAlert();
 				if (reportObject.isAlert())
 					imageViewAlert.setImageResource(R.drawable.alert_active);
@@ -126,7 +123,7 @@ public class ReportView {
 			public void onClick(View v) {
 				parentV = v;
 				v.setEnabled(false);
-				vibe.vibrate(80);// 80 represents the milliseconds
+				vibrator.vibrate(80);// 80 represents the milliseconds
 				AsyncTask<Void, View, Void> task = new AsyncTask<Void, View, Void>() {
 					@Override
 					protected void onPreExecute() {
@@ -159,7 +156,7 @@ public class ReportView {
 			}
 		});
 		
-		// /////// Leer más text
+		// /////// Leer m��s text
 		TextView leerMas = (TextView)v.findViewById(R.id.leerMasDetailChart2); 
 		leerMas.setOnClickListener(new OnClickListener() {
 			
@@ -219,14 +216,13 @@ public class ReportView {
 		// /////////////////////////////////////////////////////
 
 		// ///User message
-		TextView tvUserShortMessage = (TextView) v
-				.findViewById(R.id.userShortMsg);
+		TextView tvUserShortMessage = (TextView) v.findViewById(R.id.userShortMsg);
 		tvUserShortMessage.setText(reportObject.getComments());
 		// /////////////////////////////////////////////////////
 
 	}
 
-	protected void detailsIntent() {
+	private void detailsIntent() {
 		Intent detailsIntent = new Intent(inflater.getContext(), DetailsActivity.class);
 		inflater.getContext().startActivity(detailsIntent);		
 	}
@@ -328,7 +324,7 @@ public class ReportView {
 		sharingIntent.setType("text/plain");
 
 		String shareBody = reportObject.getComments()
-				+ " - Pawhub Lost&Found Obtén la app en http://pawhub.me";
+				+ " - Pawhub Lost&Found Obt��n la app en http://pawhub.me";
 
 		PackageManager pm = view.getContext().getPackageManager();
 		List<ResolveInfo> activityList = pm.queryIntentActivities(
@@ -371,7 +367,7 @@ public class ReportView {
 
 		String pic = System.currentTimeMillis() + ".png";
 		String shareBody = reportObject.getComments()
-				+ " - Pawhub Lost&Found Obtén la app en http://pawhub.me";
+				+ " - Pawhub Lost&Found Obt��n la app en http://pawhub.me";
 
 		Bitmap icon = BitmapFactory.decodeResource(inflater.getContext()
 				.getResources(), R.drawable.finding_home);
@@ -403,8 +399,10 @@ public class ReportView {
 				Intent.createChooser(share, "Compartir Imagen"));
 	}
 
-	public View getReportChart() {
+	public View getReportChart(Report reportObject) {
 
+		this.reportObject = reportObject;
+		
 		if (reportObject.getHasPicture())
 			generateChart_1();
 		else

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView1"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutCasesList"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/layoutCasesList"
+    <ListView
+        android:id="@+id/listViewReports"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-    </LinearLayout>
+        android:layout_height="wrap_content" >
+    </ListView>
 
-</ScrollView>
+</LinearLayout>
