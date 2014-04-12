@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 
@@ -63,6 +64,8 @@ public class SplashScreen extends Activity {
 			currentTime=initTime=System.currentTimeMillis();
 			
 			do{
+					
+				Log.i("TAG","Intentando localizar");
 				try {
 					location=userLocation.getLocation();
 					haveLocation=true;
@@ -73,7 +76,7 @@ public class SplashScreen extends Activity {
 					} catch (InterruptedException e1) {
 					}
 				}
-			}while(!haveLocation && !quedaTiempo());
+			}while(!haveLocation && quedaTiempo());
 			
 			return location;
 		}
