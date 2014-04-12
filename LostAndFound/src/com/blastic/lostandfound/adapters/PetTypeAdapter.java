@@ -14,12 +14,10 @@ import android.widget.TextView;
 
 public class PetTypeAdapter extends BaseAdapter{
 
-	private Context context;
 	private LayoutInflater inflater;
 	private ArrayList<PetType> list;
 	
 	public PetTypeAdapter(Context context,ArrayList<PetType> list){
-		this.context=context;
 		this.list=list;
 		inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}

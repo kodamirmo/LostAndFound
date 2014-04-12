@@ -1,24 +1,27 @@
 package com.blastic.lostandfound;
 
-import com.blastic.lostandfound.constants.Constants;
-import com.blastic.lostandfound.data.AppCache;
-import com.blastic.lostandfound.data.DataSourceDumy;
-import com.blastic.lostandfound.preferences.ConfigData;
-import com.blastic.lostandfound.R;
-
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
+
+import com.blastic.lostandfound.constants.Constants;
+import com.blastic.lostandfound.data.AppCache;
+import com.blastic.lostandfound.data.DataSourceDumy;
+import com.blastic.lostandfound.location.UserLocation;
+import com.blastic.lostandfound.location.UserLocation.NoLocationException;
+import com.blastic.lostandfound.preferences.ConfigData;
 
 public class SplashScreen extends Activity {
 
 	private Activity activity;
+	private UserLocation userLocation;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,7 @@ public class SplashScreen extends Activity {
 		setContentView(R.layout.activity_splash);
 
 		initUI();
-		activity = this;
-		AsyncTaskSplash splash = new AsyncTaskSplash();
-		splash.execute();
+		initSplash();
 	}
 
 	private void initUI() {
@@ -41,6 +42,54 @@ public class SplashScreen extends Activity {
 		final TextView appTitle = (TextView) findViewById(R.id.splash_app_tittle);
 		appTitle.setText(spannable, BufferType.SPANNABLE);
 
+	}
+	
+	private void initSplash(){
+		activity = this;
+		userLocation=new UserLocation(activity);
+		new AsyncTaskLocation().execute();
+	}
+	
+	private class AsyncTaskLocation extends AsyncTask<Void,Void, Location>{
+		
+		private long initTime;
+		private long currentTime;
+
+		@Override
+		protected Location doInBackground(Void... params) {
+			
+			boolean haveLocation=false;
+			Location location = null;
+			currentTime=initTime=System.currentTimeMillis();
+			
+			do{
+				try {
+					location=userLocation.getLocation();
+					haveLocation=true;
+				} catch (NoLocationException e) {
+					haveLocation=false;
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e1) {
+					}
+				}
+			}while(!haveLocation && !quedaTiempo());
+			
+			return location;
+		}
+		
+		protected void onPostExecute(final Location result) {
+			userLocation.endLocation();
+			AppCache.setMyLocation(result);
+			
+			new AsyncTaskSplash().execute();
+		}
+		
+		private boolean quedaTiempo(){
+			currentTime=System.currentTimeMillis();
+			return ((currentTime-initTime)<3000)?true:false;	
+		}
+		
 	}
 
 	private class AsyncTaskSplash extends AsyncTask<Void, Void, Void> {
@@ -79,7 +128,6 @@ public class SplashScreen extends Activity {
 			getBaseContext().startActivity(loginScreen);
 			activity.finish();
 		}
-
 	}
 
 }

@@ -3,6 +3,8 @@ package com.blastic.lostandfound;
 import com.blastic.lostandfound.R;
 import com.blastic.lostandfound.adapters.DetailPagerAdapter;
 import com.blastic.lostandfound.config.Config;
+import com.blastic.lostandfound.dialogs.DialogNoAvailable;
+import com.blastic.lostandfound.preferences.UserData;
 import com.blastic.lostandfound.views.ExpandAnimation;
 
 import android.content.Intent;
@@ -19,7 +21,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class DetailsActivity extends ActionBarActivity implements OnClickListener{
 
@@ -66,6 +67,13 @@ public class DetailsActivity extends ActionBarActivity implements OnClickListene
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		if(UserData.isGuest(this)){
+			DialogNoAvailable dialog=new DialogNoAvailable();
+			dialog.show(getSupportFragmentManager(), "DIALOG");
+			return super.onOptionsItemSelected(item);
+		}
+			
 		switch (item.getItemId()) {
 		case R.id.action_alert:
 			makeAlert();
@@ -86,21 +94,15 @@ public class DetailsActivity extends ActionBarActivity implements OnClickListene
 	}
 
 	private void shareIntent() {
-		Toast.makeText(this,
-				"Esta opci��n a��n no est�� disponible en el demo",
-				Toast.LENGTH_LONG).show();
-		/*Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+		Intent sharingIntent = new Intent(Intent.ACTION_SEND);
 		sharingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		sharingIntent.setType("text/html");
-		sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT,
-				"Texto a compartir");
-		startActivity(Intent.createChooser(sharingIntent, "Compartir con"));*/
+		sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Sharing URL");
+		sharingIntent.putExtra(Intent.EXTRA_TEXT, "http://www.url.com");
+		startActivity(Intent.createChooser(sharingIntent, "Compartir con"));
 	}
 
 	private void openSettings() {
-		Toast.makeText(this,
-				"Esta opci��n a��n no est�� disponible en el demo",
-				Toast.LENGTH_LONG).show();
+		
 		/*Intent openSet = new Intent(this, SettingsActivity.class);
         startActivity(openSet);*/
 	}
@@ -111,9 +113,7 @@ public class DetailsActivity extends ActionBarActivity implements OnClickListene
 	}
 
 	private void makeAlert() {
-		Toast.makeText(this,
-				"Esta opci��n a��n no est�� disponible en el demo",
-				Toast.LENGTH_LONG).show();
+		
 	}
 
 	@Override
