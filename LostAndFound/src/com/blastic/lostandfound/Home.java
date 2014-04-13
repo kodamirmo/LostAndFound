@@ -66,7 +66,6 @@ public class Home extends ActionBarActivity {
 	private final int SCREEN_HOMELESS = 6;
 	private final int SCREEN_ACCIDENT = 7;
 	private final int SCREEN_MAP = 8;
-	private final int SCREEN_DONATE = 10;
 
 	private int CURRENT_SCREEN = 0;
 
@@ -269,10 +268,6 @@ public class Home extends ActionBarActivity {
 			fragment = new FragmentCasesMap();
 			CURRENT_SCREEN = SCREEN_MAP;
 			break;
-		case R.id.entry_donate:
-			fragment = new DonateFragment();
-			CURRENT_SCREEN = SCREEN_DONATE;
-			break;
 		}
 
 		fragment.setArguments(arguments);
@@ -312,6 +307,9 @@ public class Home extends ActionBarActivity {
 				dialog.show(getSupportFragmentManager(), "DIALOG");
 			}else if(id==R.id.entry_rank){
 				rankApp();
+			}else if(id==R.id.entry_donate){
+				Intent goToDonate=new Intent(getBaseContext(), DonateActivity.class);
+				startActivity(goToDonate);
 			}else{
 				showScreen(id);
 			}
