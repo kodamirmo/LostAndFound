@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -121,5 +122,20 @@ public class ImageUtils {
 		if (!temp.exists())
 			temp.mkdirs();
 		return temp;
+	}
+	
+	public static String getPath(Activity activity,Uri uri) {
+        if( uri == null ) {
+            return null;
+        }
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = activity.managedQuery(uri, projection, null, null, null);
+        if( cursor != null ){
+            int column_index = cursor
+            .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+        return uri.getPath();
 	}
 }

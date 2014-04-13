@@ -3,8 +3,8 @@ package com.blastic.lostandfound;
 import com.blastic.lostandfound.R;
 import com.blastic.lostandfound.adapters.DetailPagerAdapter;
 import com.blastic.lostandfound.config.Config;
+import com.blastic.lostandfound.data.UserData;
 import com.blastic.lostandfound.dialogs.DialogNoAvailable;
-import com.blastic.lostandfound.preferences.UserData;
 import com.blastic.lostandfound.views.ExpandAnimation;
 
 import android.content.Intent;

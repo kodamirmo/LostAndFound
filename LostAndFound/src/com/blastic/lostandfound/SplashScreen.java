@@ -12,12 +12,12 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 
-import com.blastic.lostandfound.constants.Constants;
+import com.blastic.lostandfound.config.Config;
 import com.blastic.lostandfound.data.AppCache;
 import com.blastic.lostandfound.data.DataSourceDumy;
+import com.blastic.lostandfound.data.UserData;
 import com.blastic.lostandfound.location.UserLocation;
 import com.blastic.lostandfound.location.UserLocation.NoLocationException;
-import com.blastic.lostandfound.preferences.ConfigData;
 
 public class SplashScreen extends Activity {
 
@@ -106,7 +106,7 @@ public class SplashScreen extends Activity {
 			AppCache.saveCache(handler.getData());
 
 			try {
-				if (Constants.isDebug())
+				if (Config.isDebug())
 					Thread.sleep(100);
 				else
 					Thread.sleep(3000);
@@ -122,7 +122,7 @@ public class SplashScreen extends Activity {
 			Intent loginScreen;
 
 			// Change condition when login has been implemented
-			if (!ConfigData.isLogged(activity))
+			if (!UserData.isLogged(activity))
 				loginScreen = new Intent(getApplicationContext(),LoginScreen.class);
 			else
 				loginScreen = new Intent(getApplicationContext(),Home.class);

@@ -9,8 +9,8 @@ import java.io.OutputStream;
 import com.blastic.lostandfound.R;
 import com.blastic.lostandfound.config.Config;
 import com.blastic.lostandfound.data.AppCache;
+import com.blastic.lostandfound.data.UserData;
 import com.blastic.lostandfound.dialogs.DialogNoAvailable;
-import com.blastic.lostandfound.preferences.UserData;
 import com.blastic.lostandfound.transferobjects.Report;
 
 import android.content.Intent;

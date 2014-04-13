@@ -17,8 +17,8 @@ public class PetTypeAdapter extends BaseAdapter{
 	private LayoutInflater inflater;
 	private ArrayList<PetType> list;
 	
-	public PetTypeAdapter(Context context,ArrayList<PetType> list){
-		this.list=list;
+	public PetTypeAdapter(Context context){
+		this.list=getPetTypes();
 		inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 	
@@ -75,7 +75,7 @@ public class PetTypeAdapter extends BaseAdapter{
 		}
 	}	
 	
-	public static ArrayList<PetType> getPetTypes(){
+	private ArrayList<PetType> getPetTypes(){
 		ArrayList<PetType> listTypes=new ArrayList<PetTypeAdapter.PetType>();
 		listTypes.add(new PetType(R.drawable.dog_icon,"Perro"));
 		listTypes.add(new PetType(R.drawable.cat_icon,"Gato"));

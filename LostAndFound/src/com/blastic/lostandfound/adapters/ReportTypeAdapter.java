@@ -17,8 +17,8 @@ public class ReportTypeAdapter extends BaseAdapter{
 	private LayoutInflater inflater;
 	private ArrayList<ReportType> list;
 
-	public ReportTypeAdapter(Context context,ArrayList<ReportType> list){
-		this.list=list;
+	public ReportTypeAdapter(Context context){
+		this.list=getReportTypes();
 		inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 	
@@ -73,7 +73,7 @@ public class ReportTypeAdapter extends BaseAdapter{
 		}
 	}
 	
-	public static ArrayList<ReportType> getReportTypes(){
+	private ArrayList<ReportType> getReportTypes(){
 		ArrayList<ReportType> listTypes=new ArrayList<ReportTypeAdapter.ReportType>();
 		listTypes.add(new ReportType(R.drawable.missing_icon_blue,"Extraviado"));
 		listTypes.add(new ReportType(R.drawable.found_icon_blue,"Encontrado"));

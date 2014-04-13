@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import android.widget.Toast;
 
+import com.blastic.lostandfound.data.UserData;
 import com.blastic.lostandfound.dialogs.DialogConfirmGuest;
-import com.blastic.lostandfound.preferences.UserData;
 import com.blastic.lostandfound.tw.TwitterApp;
 import com.blastic.lostandfound.tw.TwitterApp.TwDialogListener;
 import com.facebook.Request;

@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
 
-    <!-- Share, should appear as action button -->
-    <item
-        android:id="@+id/action_share"
-        android:icon="@drawable/share_white"
-        android:title="@string/share" 
-        android:showAsAction="always"/>
     <!-- Publish, should appear as action button -->
     <item
         android:id="@+id/action_publish"
         android:icon="@drawable/checked"
         android:title="@string/publish" 
-        android:showAsAction="always"/>
+        app:showAsAction="always"/>
 
-    <!-- Settings, should appear as action button -->
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ic_action_settings"
-        android:title="@string/action_settings"
-        android:showAsAction="never"/>
 
 </menu>
