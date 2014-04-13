@@ -77,7 +77,6 @@
                     android:fontFamily="open-sans"
                     android:hint="@string/reportPetName_lbl"
                     android:inputType="text"
-                    android:textColor="#B4B4B4"
                     android:textSize="14sp" >
                 </EditText>
             </TableRow>
@@ -156,7 +155,6 @@
                     android:fontFamily="open-sans"
                     android:hint="@string/reportPetReportTel_lbl"
                     android:inputType="phone"
-                    android:textColor="#B4B4B4"
                     android:textSize="14sp" >
                 </EditText>
             </TableRow>
@@ -190,7 +188,6 @@
             android:inputType="text"
             android:paddingLeft="5dp"
             android:textAlignment="textStart"
-            android:textColor="#B4B4B4"
             android:textSize="14sp" >
         </EditText>
 
@@ -208,7 +205,6 @@
             android:inputType="textMultiLine"
             android:paddingLeft="5dp"
             android:textAlignment="textStart"
-            android:textColor="#B4B4B4"
             android:textSize="14sp" >
         </EditText>
 

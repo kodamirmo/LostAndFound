@@ -11,7 +11,6 @@
         android:layout_gravity="center_vertical"
         android:padding="2dp"
         android:text="@string/entry_title_3"
-        android:textColor="#3A3A3A"
         android:textSize="20sp" />
     
 
