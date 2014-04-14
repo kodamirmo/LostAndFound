@@ -16,6 +16,7 @@ import com.blastic.lostandfound.config.Config;
 import com.blastic.lostandfound.data.AppCache;
 import com.blastic.lostandfound.data.DataSourceDumy;
 import com.blastic.lostandfound.data.UserData;
+import com.blastic.lostandfound.gcm.RegisterGCM;
 import com.blastic.lostandfound.location.UserLocation;
 import com.blastic.lostandfound.location.UserLocation.NoLocationException;
 
@@ -31,6 +32,7 @@ public class SplashScreen extends Activity {
 
 		initUI();
 		initSplash();
+		RegisterGCM.registerGCM(this);
 	}
 
 	private void initUI() {

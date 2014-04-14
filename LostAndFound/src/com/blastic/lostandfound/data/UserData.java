@@ -2,6 +2,7 @@ package com.blastic.lostandfound.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class UserData {
 	
@@ -26,6 +27,31 @@ public class UserData {
 		SharedPreferences.Editor editor=preferences.edit();
 		editor.putBoolean("LOGGED",logged);
 		editor.commit();	
+	}
+	
+	private static SharedPreferences getGCMPreferences(Context context){
+		return context.getSharedPreferences("GCM_UTILS",Context.MODE_PRIVATE);
+	}
+	
+	public static boolean isRegisterGCM(Context context){
+		if(getRegistrationId(context).isEmpty()){
+			Log.i("TAG", "No esta registrado este dispositivo");
+			return false;
+		}
+		return true;
+	}
+	
+	public static String getRegistrationId(Context context){
+		SharedPreferences preferences=getGCMPreferences(context);
+		String registrationID=preferences.getString("REGISTER_ID", "");
+		
+		return registrationID;
+	}
+	
+	public static void guardarRegistrationId(Context context, String id){
+		SharedPreferences.Editor editor=getGCMPreferences(context).edit();
+		editor.putString("REGISTER_ID", id);
+		editor.commit();
 	}
 
 }
